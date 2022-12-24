@@ -14,11 +14,10 @@ public class StudentController {
 
     @GetMapping
     public List<Student> getAllStudent() {
-        List<Student> students = new ArrayList<>();
-        IntStream.range(1, 10).forEach(number -> {
-            students.add(new Student("name" + number, "email" + number + "@gmail.com"));
-        });
-        return students;
+        return IntStream
+                .range(0, 10)
+                .mapToObj(number -> new Student("name" + number, "email" + number + "@gmail.com"))
+                .toList();
     }
 
     record Student(String name, String email) {
