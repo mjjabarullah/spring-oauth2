@@ -36,14 +36,23 @@ import java.util.UUID;
 @Configuration(proxyBeanMethods = false)
 public class AuthServerConfig {
 
-    // config endpoint
-    //http://localhost:8080/.well-known/openid-configuration
-
-    //Authorization get url
-    //http://localhost:8080/oauth2/authorize?response_type=code&client_id=client&scope=openid&redirect_uri=http://spring.io/authorized&code=QYPAZ5NU8yvt1Q9erXrUYR-T5AGCjCF47vN-KsaI2A8&code_challenge_method=RS256
-
-    //token post url
-    //http://localhost:8080/oauth2/token?client_id=client&redirect_uri=http://spring.io/authorized&grant_type=authorization_code&code=3HV9LeuX60JM_k_kTjInGpL1ILdrNL8DXPVtZGFjA6boyoffwxQGDi3CeUhuQJuizaZHz8T3Plci2kM_QUJ3dVyL9GK66MTomZcAssNH6Y9T4W0rVjEF81XMzGO45gcd&code_verifier=qPsH306-ZDDaOE8DFzVn05TkN3ZZoVmI_6x4LsVglQI
+    /*---------------------------------------------------------------------------------------
+     * config endpoint
+     * @method GET
+     * http://localhost:8080/.well-known/openid-configuration
+     *
+     * Authorization get url
+     * @method GET
+     * @param code is PKCE code challenge
+     * http://localhost:8080/oauth2/authorize?response_type=code&client_id=client&scope=openid&redirect_uri=http://spring.io/authorized&code=QYPAZ5NU8yvt1Q9erXrUYR-T5AGCjCF47vN-KsaI2A8&code_challenge_method=RS256
+     *
+     * token url
+     * @method POST
+     * @param verifier is PKCE code verifier
+     * @param code is authorization code which is given by authorize link response
+     * http://localhost:8080/oauth2/token?client_id=client&redirect_uri=http://spring.io/authorized&grant_type=authorization_code&code=3HV9LeuX60JM_k_kTjInGpL1ILdrNL8DXPVtZGFjA6boyoffwxQGDi3CeUhuQJuizaZHz8T3Plci2kM_QUJ3dVyL9GK66MTomZcAssNH6Y9T4W0rVjEF81XMzGO45gcd&code_verifier=qPsH306-ZDDaOE8DFzVn05TkN3ZZoVmI_6x4LsVglQI
+     *
+     ---------------------------------------------------------------------------------------*/
 
     @Bean
     @Order(Ordered.HIGHEST_PRECEDENCE)
